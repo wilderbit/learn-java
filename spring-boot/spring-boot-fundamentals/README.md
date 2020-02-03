@@ -110,3 +110,75 @@ Naming format
 - `applications-dev.properties`
 - `applications-test.properties`
 - `applications-prod.properties`
+
+## Module 3 [Accessing data with Spring boot and H2]
+- Data access
+- Benefits of Spring with JPA
+- Default configurations
+- Querying using repositories
+
+H2 DataBase 
+-
+- In Memory Database written in JAVA(Open Source), Good for POC's, dev envs, Admin via H2 Console.
+
+H2 dependency
+-
+Auto configures H2 related properties
+```xml
+<dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <scope>runtime</scope>
+</dependency>
+```
+Latest 
+```xml
+<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+<dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <version>1.4.200</version>
+    <scope>test</scope>
+</dependency>
+
+
+```
+
+H2 Defaults props 
+```properties
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.h2.console.enabled=false
+```
+
+By design, the in-memory database is volatile and data will be lost when we restart the application.
+We can change that behavior by using file-based storage. To do this we need to update the spring.datasource.url
+
+`spring.datasource.url=jdbc:h2:file:/data/demo`
+
+We can access only if `spring.h2.console.enabled=true`
+
+Accessing the H2 Console
+-
+
+Run spring boot server and open url `localhost:8080/h2`
+
+ORM with JPA
+-
+DataBase -> JDBC -> JPA -> Spring Data JPA(Hibernate)
+
+Hibernate(Popular JPA implementation), Spring Data JPA, Spring ORM
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+```
+
+Entities
+-
+Entities are objects that living in Database, They have ability to map to a database.
+
+Entities are defined by `@Entity` Annotation.
