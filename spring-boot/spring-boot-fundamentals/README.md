@@ -1,4 +1,5 @@
 
+## Module 1 [Intro to Spring boot and Its Benefits]
 Before this course
 -
 1. Spring Fundamentals
@@ -55,3 +56,14 @@ Actuator(Allows to know what is going on inside the application)
 - Manage via HTTP endpoints of JMX
 - Health status, metrics, loggers, audit events, HTTP trace
 ### [Gitlab Code](https://gitlab.com/videolearning/spring-fundamentals)
+
+## Module 2 [Bootstrapping a Simple Application]
+1. Spring Init
+2. Automatic Config 
+3. Annotations
+4. Profiles
+
+Spring Init
+-
+Go to [Spring Init](https://start.spring.io). Here we can create basic application with some default mvn dependencies.
+
