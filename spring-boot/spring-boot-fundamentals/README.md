@@ -58,6 +58,7 @@ Actuator(Allows to know what is going on inside the application)
 ### [Gitlab Code](https://gitlab.com/videolearning/spring-fundamentals)
 
 ## Module 2 [Bootstrapping a Simple Application]
+
 1. Spring Init
 2. Automatic Config 
 3. Annotations
@@ -67,3 +68,45 @@ Spring Init
 -
 Go to [Spring Init](https://start.spring.io). Here we can create basic application with some default mvn dependencies.
 
+- Build with maven `mvn clean install -DskipTests=true`
+
+Demo Auto Configuration
+-
+Finds JARs on the classpath and auto-configures bean.
+
+Add your own beans, like a datasource bean
+
+Start Application with `--debug` switch 
+
+Add a simple property to application.properties
+
+Add the Spring Boot Actuator
+
+@SpringBootApplication Annotation
+-
+Shortcut for three annotations
+- @SpringBootConfiguration (Replaces @Configurations and annotates a class as a configurations).
+- @EnableAutoConfiguration (Tell Spring boot to configure a beans).
+- @ComponentScan (Tells Spring boot ato scan current package and subpackages).
+
+Spring Boot Properties
+-
+Configuration file for application
+
+[Application properties](https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html)
+
+[Common Application Properties](https://docs.spring.io/spring-boot/docs/1.1.6.RELEASE/reference/html/common-application-properties.html)
+
+Spring Boot Profiles
+-
+Profile is for different environment(Development, test, Production).
+
+```properties
+# Define active profile
+spring.profiles.active = dev
+```
+Naming format
+- `applications-{profile}.properties`
+- `applications-dev.properties`
+- `applications-test.properties`
+- `applications-prod.properties`
