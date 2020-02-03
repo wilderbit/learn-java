@@ -160,6 +160,14 @@ We can change that behavior by using file-based storage. To do this we need to u
 
 We can access only if `spring.h2.console.enabled=true`
 
+Override H2 default props
+-
+```properties
+spring.datasource.url=jdbc:h2:mem:bugtracker
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2
+```
+
 Accessing the H2 Console
 -
 
