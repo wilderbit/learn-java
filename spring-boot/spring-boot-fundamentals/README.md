@@ -190,3 +190,167 @@ Entities
 Entities are objects that living in Database, They have ability to map to a database.
 
 Entities are defined by `@Entity` Annotation.
+
+## Module 4 [Configuring a spring MVC Application with Spring Boot]
+- MVC Design Pattern
+- Useful annotations
+- Deploy application to tomcat
+
+MVC Design Pattern
+-
+- Spring MVC Dependency
+    1. Dispatcher Servlet, default error page, servlet containers(tomcat is default), jars
+- MVC Design pattern
+
+```
+  User 
+    |__Activates-> Controller
+    |__Sees->View
+             |__Model
+``` 
+
+- Packaging and Deployment
+    1. Packaged as traditional web application in a .war file
+- Spring Boot Maven Plugin
+    1. Repackages your .jar and .war files to be executable
+    2. Runs Spring boot Application
+    3. Provides built-in dependency resolver
+    4. Manages lifecycle of Spring Boot application
+- Application Layers
+    - ApplicationController
+    - Model
+    - Service
+    - Repository
+    - View
+ 
+## Building a RESTful Web Application with Spring Boot
+- Building a RESTful service
+- REST architecture style
+- HTTP response codes 
+- Annotations
+- Exception Handling
+
+- @RestController ==> @Controller && @ResponseBody
+- ResponseEntity
+    - Represents entire http response
+
+## GraphQL
+It is a query language for APIs or a syntax that describes how to ask for data.
+
+Features 
+-
+    - Allows client to specify the exact data needed
+    - Aggregation of data from multiple sources
+    - No longer required to call multiple APIs for neede data
+    - GraphQL offers maximum efficiency and flexiblity
+    
+Sample Query Request    
+```text
+{
+    findAllApplications
+        {
+            id
+            owner    
+        }
+}   
+```
+
+Sample Query Response
+```json
+{
+  "data": {
+        "findAllApplications": [
+            {"id":  1, "owner":  "Kesha"}, {"id": 2, "owner":  "Jane"}
+        ]      
+    }
+}
+```
+GraphQL Maven dependencies
+```
+graphql-spring-boot-starter
+graphql-java-tool
+```
+
+GraphQl Schema
+-
+- Defines data points offered via an API
+- Data types and relationships
+- Operations available
+- graph-ql-java-too parses schemas ending in `.graphqls`
+
+## Enabling actuators, Metrics, and Health Indicators
+- Spring boot actuator
+- Actuator endpoints
+- Custom metrics endpoints 
+- Health indicators
+- Monitoring capabilities
+
+Actuator
+-
+- Provides health check and auditing
+- Metrics and HTTP tracing
+- Exposes HTTP or JMX endpoints
+ 
+Actuator dependency
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
+
+Actuator endpoints
+- 
+`http://localhost:8080/actuator`
+
+Custom Health Indicator
+-
+Need to Implements HealthIndicator interface of actuator and Override method health()
+```java
+class Service implements HealtIndicator {
+    @Override
+    public Health health() {
+        if(!isRunningServicePeopleService()) {
+            return Health.down().withDetail("PeopleService", "Not Available").build();
+        }
+        return Health.up().withDetail("PeopleService", "Available").build();
+    }
+    
+    private boolean isRunningServicePeopleService() {
+        // Add a real logic here
+        return true;
+    } 
+
+}
+```
+
+## Testing with Spring Boot
+- Unit tests
+- Integration tests
+- @SpringBootTests
+- @WebMvcTest(An annotation used for controller layer unit testing)
+- TestRestTemplate
+
+Spring boot dependency
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <version>2.2.4.RELEASE</version>
+    <scope>test</scope>
+</dependency>
+```
+
+Unit Tests
+-
+- JUnit(Unit Testing framework), Mockito, Spring Test
+- Test individual units of code
+- Mocking framework and @MockBean annotation
+- Mockito, It internally uses Java Reflection API and allows to create Object of a service, 
+  It A mock object return a dummy data and avoids external dependencies.
+  
+Integration Tests
+-
+- @SpringBootTest Annotation used for integration testing.
+- @SpringBootTest Locates the main configuration class
+- 

@@ -1,6 +1,7 @@
 package com.fundamentals.entity;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 public class Application {
@@ -8,6 +9,8 @@ public class Application {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "application_id")
     private Integer id;
+
+    private Optional<String>;
 
     @Column(name = "app_name", nullable = false)
     private String name;
