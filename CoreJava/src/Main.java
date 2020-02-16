@@ -13,6 +13,7 @@ class Developer {
     }
 
     public String getName() {
+        // asdfmkas
         return name;
     }
 
@@ -37,27 +38,39 @@ class Developer {
     }
 
     public String toString() {
-        return "Developer [name=" + name.toString() + ", " + "salary=" + salary.toString() + ", " + "age=" + age.toString() + "]";
+
+        return "Developer [name="
+            + name.toString()
+            + ", "
+            + "salary="
+            + salary.toString()
+            + ", "
+            + "age="
+            + age.toString()
+            + "]";
     }
 }
 
 public class Main {
+
     public static void main(String[] args) {
         System.out.println("Hello World");
         List<Developer> developers = getDevelopers();
         System.out.println("Before Sort");
-        for (Developer dev: developers) {
+        for (Developer dev : developers) {
             System.out.println(dev);
         }
 
-        Collections.sort(developers, new Comparator<Developer>(){
-            public int compare(Developer d1, Developer d2) {
-                return d1.getAge().compareTo(d2.getAge());
-            }
-        });
+        Collections.sort(
+            developers,
+            new Comparator<Developer>() {
+                public int compare(Developer d1, Developer d2) {
+                    return d1.getAge().compareTo(d2.getAge());
+                }
+            });
 
         System.out.println("Before Sort");
-        for (Developer dev: developers) {
+        for (Developer dev : developers) {
             System.out.println(dev);
         }
     }
