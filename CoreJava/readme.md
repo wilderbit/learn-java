@@ -18,7 +18,8 @@ Predicate<String> isEmpty = String::isEmpty;
 Predicate<String> isNotEmpty = isEmpty.negate();
 ```
 
-- Functions
+Functions
+---
 Functions accept one argument and produce a result. Default methods can be used to chain multiple
 multiple functions together(compose, andThen).
 
@@ -28,21 +29,24 @@ Function<String, String> backToString = toInteger.andThen(String::valueOf);
 backToString.apply("123");     // "123"
 ```
 
-- Suppliers
+Suppliers
+-
 Suppliers produces the result of given generic type. Unlike Functions, Suppliers don't accept args.
 ```java
 Supplier<Person> personSupplier = Person::new;
 personSupplier.get();   // new Person
 ```
 
-- Consumers
+Consumers
+-
 Consumers represents operation to be performed on a single input argument.
 ```java
 Consumer<Person> greeter = (p) -> System.out.println("Hello, " + p.firstName);
 greeter.accept(new Person("Luke", "Skywalker"));
 ```
 
-- Comparator
+Comparator
+-
 ```java
 Comparator<Person> comparator = (p1, p2) -> p1.firstName.compareTo(p2.firstName);
 
@@ -53,7 +57,8 @@ comparator.compare(p1, p2);             // > 0
 comparator.reversed().compare(p1, p2);  // < 0
 ```
 
-- Optionals
+Optionals
+-
 Optionals are not FunctionalInterface, instead it's a nifty utility to prevent `NullPointeException`.
 Optional is a simple container for a value which may be `null` or `non-null`. Think of a method 
 which may return a `non-null` result but sometimes return nothing. Instead of returning `null` 
