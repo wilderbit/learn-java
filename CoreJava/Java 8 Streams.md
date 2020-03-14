@@ -48,6 +48,12 @@ class StreamTest {
             .map(x -> x.split(","))
             .filter(x -> x.length > 2)
             .collect(Collectors.toMap(x-> x[0], x-> Integer.parseInt(x[1])));
+        
+        // Reduction
+        double total = Stream.of(7.3, 4.2, 5.1, 5.0, 1.4, 3.0).reduce(0.0, (Double a, Double b) -> a + b);
+        System.out.print(total);
+        IntSummaryStatistics summary = IntStream.of(1,2,3,4,5,6,7,8).summaryStatistics();
+        System.out.print(summary);
     }
 }
 ```
